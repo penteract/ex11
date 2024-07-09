@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -I/usr/local/X11/include
+CFLAGS = -I/usr/local/X11/include -fpermissive
 
 LIBS = -L/usr/X11R6/lib -lX11
 

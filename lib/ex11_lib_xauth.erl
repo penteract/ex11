@@ -23,7 +23,7 @@
 %%%
 %%% Contributor(s): ______________________________________.
 %%%
-%%% Origonal Author: Unknown - probably Torbjörn Törnkvist
+%%% Origonal Author: Unknown - probably TorbjÃ¶rn TÃ¶rnkvist
 %%% Modified: 23 Feb 1998 by tony@cslab.ericsson.se
 %%%           To make it work under Windows. Added filename/0.
 %%%
