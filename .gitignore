@@ -1,0 +1,3 @@
+*.beam
+*.o
+lib/ex11_lib_read_jpeg
