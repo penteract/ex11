@@ -217,16 +217,16 @@ try_to_connect({Host, Display, Cookie}, Screen) ->
     end.
 
 connect(unix, Display) ->
-    case (catch unixdom2:module_info()) of
-        {'EXIT',_} ->
-            {error,noUnixDomainSockets};
-        _ ->
-	    io:format("Connecting to unix domain socket:~p~n",[Display]),
-	    {ok, Sock} = unixdom2:start_link(),
-	    Path = lists:flatten(io_lib:format("/tmp/.X11-unix/X~p", 
-					       [Display])),
-	    unixdom2:connect(Sock, Path, [{active,true}, binary]),
-	    {ok, {unix, Sock}}
+    io:format("Connecting to unix domain socket:~p~n",[Display]),
+    Path = lists:flatten(io_lib:format("/tmp/.X11-unix/X~p", 
+				       [Display])),
+    BinPath = list_to_binary(Path),
+    AbstractPath = <<0,BinPath/binary>>,
+    case gen_tcp:connect({local,Path},0,[local,binary],infinity) of
+	{ok,Sock} -> {ok, {tcp, Sock}};
+	{error,Reason} ->
+	    {ok,Sock} = gen_tcp:connect({local,AbstractPath},0,[local,binary],infinity),
+	    {ok, {tcp, Sock}}
     end;
 connect({ip,IP}, Display) ->
     io:format("Connecting to tcp port:~p~n",[6000+Display]),
@@ -294,6 +294,7 @@ parse_screen_number(Str) ->
 %%   the length is a two byte quantity in bytes 7..8 of the reply
 
 get_connect_reply(Fd, Bin0) ->
+	%io:format("bin_connect: ~w",[Bin0]),
     Bin = my_concat_binary(Bin0, recv(Fd)),
     case Size = size(Bin) of
 	N when N < 8 -> get_connect_reply(Fd, Bin);
