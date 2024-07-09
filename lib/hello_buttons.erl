@@ -52,7 +52,7 @@ init() ->
 win1(Pid) ->
     Win  = xCreateSimpleWindow(Pid, 10, 10, 300, 100, ?XC_arrow, 
 			       xColor(Pid, ?wheat2)),
-    Font = xEnsureFont(Pid, "9x15"),  
+    Font = xEnsureFont(Pid, "*"),  
     Pen  = xCreateGC(Pid, [{function, copy},
 			   {font, Font},
 			   {fill_style, solid},
@@ -94,7 +94,7 @@ loop(Pid, Cmds) ->
 
 win2(Pid) ->
     Win  = xCreateSimpleWindow(Pid, 10, 10, 300, 100, ?XC_arrow, xColor(Pid, ?wheat2)),
-    Font = xEnsureFont(Pid, "9x15"),  
+    Font = xEnsureFont(Pid, "*"),  
     Pen  = xCreateGC(Pid, [{function, copy},
 			   {font, Font},
 			   {fill_style, solid},
@@ -147,7 +147,7 @@ win4(Pid) ->
     Button = xCreateSimpleWindow(Pid, Win, 20,20,130,25,0, ?XC_cross, 
 				 xColor(Pid, ?white),
 				 ?EVENT_EXPOSURE bor ?EVENT_BUTTON_PRESS),
-    Font = xEnsureFont(Pid, "9x15"),  
+    Font = xEnsureFont(Pid, "*"),  
     Pen  = xCreateGC(Pid, [{function, copy},
 			   {font, Font},
 			   {fill_style, solid},
@@ -236,7 +236,7 @@ loopB(Button, Redraw, Press) ->
     end.
 
 init_buttons(Pid) ->
-    Font   = xEnsureFont(Pid, "9x15"),  
+    Font   = xEnsureFont(Pid, "*"),  
     xCreateNamedGC(Pid, "pen", [{function, copy},
 				{font, Font},
 				{fill_style, solid},

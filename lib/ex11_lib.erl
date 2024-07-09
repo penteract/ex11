@@ -178,7 +178,7 @@ init(Pid, Screen) ->
     Win = xVar(Pid, defaultWindow),
     xPen(Pid, "black",1,?black),
     xPen(Pid, "white",1,?white),
-    Font   = xEnsureFont(Pid, "9x15"),
+    Font   = xEnsureFont(Pid, "*"),
     xCreateNamedGC(Pid, "text", [{function, copy},
 				 {font, Font},
 				 {fill_style, solid},

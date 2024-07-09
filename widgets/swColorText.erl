@@ -53,20 +53,20 @@ init(Parent, X, Y, W, H, Border, Color) ->
     Wargs1 = sw:mkWindow(Display, Parent, Wargs),
     Win = Wargs1#win.win,
     %% Make a GC that gives us a red foreground on a white background ...
-    GC1  = mkFace(Display, "9x15", ?red, ?white),
-    GC2  = mkFace(Display, "9x15", ?white, ?black),
-    GC3  = mkFace(Display, "9x15", ?black, ?white),
+    GC1  = mkFace(Display, "*", ?red, ?white),
+    GC2  = mkFace(Display, "*", ?white, ?black),
+    GC3  = mkFace(Display, "*", ?black, ?white),
     Bin1 = eImageText8(Win, GC1, 10, 18, "hello (1)"),
     Bin2 = eImageText8(Win, GC2, 40, 50, "joe"),
     F = fun(_) -> void end,
     %% Make the initial matrix
     S = mk_page(W, H, GC3),
     io:format("S=~p~n",[S]),
-    Font  = xEnsureFont(Display, "9x15"),
+    Font  = xEnsureFont(Display, "*"),
     %% Set up a couple of GC's for blinking
     Blink = {disabled, 10, 10, 
-	     mkFace(Display,"9x15",?yellow,?red),
-	     mkFace(Display,"9x15",Color,Color)},
+	     mkFace(Display,"*",?yellow,?red),
+	     mkFace(Display,"*",Color,Color)},
     loop(Blink, F, F, Display, Win, dict:new(), Font, S, Wargs1).
 
 

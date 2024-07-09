@@ -105,7 +105,7 @@ init(Display) ->
     make_GCs(Display).
 
 default_preferences(Display) ->
-    xSetVar(Display, sysFont, "9x15"),
+    xSetVar(Display, sysFont, "*"),
     xSetVar(Display, sysFontColor, ?DarkBlue),
     xSetVar(Display, buttonHeight, 30),
     xSetVar(Display, darkBlack, ?black),

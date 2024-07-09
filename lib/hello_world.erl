@@ -30,7 +30,7 @@ init() ->
     {ok, Pid} = xStart("3.2"),
     Win  = xCreateSimpleWindow(Pid, 10, 10, 300, 100, ?XC_arrow, 
 			       xColor(Pid, ?wheat2)),
-    Font = xEnsureFont(Pid, "9x15"),  
+    Font = xEnsureFont(Pid, "*"),  
     Pen  = xCreateGC(Pid, [{function, copy},
 			   {font, Font},
 			   {fill_style, solid},

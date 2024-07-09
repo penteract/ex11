@@ -59,7 +59,7 @@ win(File) ->
 
 page() ->
     [{pen,code,1,?wheat1},
-     {face,small,?black,"9x15"},
+     {face,small,?black,"*"},
      %% use xfontsel to get the names of the
      %% font selector in KDE
      {face, script, ?red, "*-urw-chancery l-*-*-*-*-80-*-*-*-*-*-*-*"},
