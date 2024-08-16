@@ -1,3 +1,5 @@
 *.beam
 *.o
 lib/ex11_lib_read_jpeg
+erl_crash.dump
+startup_error_report

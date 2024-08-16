@@ -93,7 +93,7 @@ loop(Client, Fd, Bin, Max, OB, LO) ->
 	    send(Fd, reverse(OB)),
 	    loop(Client, Fd, Bin, Max, [], 0);
 	{tcp, Port, BinX} ->
-	    %% io:format("received:~p bytes~n",[size(BinX)]),
+	    io:format("received:~p bytes~n",[size(BinX)]),
 	    Bin1 = handle(Client, <<Bin/binary, BinX/binary>>),
 	    loop(Client, Fd, Bin1, Max, OB, LO);
 	{unixdom, Socket, BinX} ->

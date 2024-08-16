@@ -1187,9 +1187,9 @@ get_str(<<N:8,B/binary>>, L) ->
 
 %% eParseEvent(Type, Bin) -> {Win, Args}.
 
-eParseEvent(expose, <<12:8,_:24,Win:32,_/binary>>) ->
+eParseEvent(expose, <<12:8,_:24,Win:32,X:2,Y:2,Width:2,Height:2,_/binary>>) ->
     %% pg 136
-    {Win, expose};
+    {Win, {expose,X,Y,Width,Height}};
 eParseEvent(keyPress, <<2:8,KeyCode:8,_:80,Win:32,_:96,State:16,_/binary>>) ->
     %% pg 192
     %% Note the keypess numbers are the same as occur in xev
